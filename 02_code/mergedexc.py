@@ -1,7 +1,6 @@
 # File mergedexc.py (Python 3.X + 2.X)
 sep = '-' * 45 + '\n'
 
-
 print(sep + 'EXCEPTION RAISED AND CAUGHT')
 try:
     x = 'spam'[99]
@@ -11,7 +10,6 @@ finally:
     print('finally run')
 print('after run')
 
-
 print(sep + 'NO EXCEPTION RAISED')
 try:
     x = 'spam'[3]
@@ -20,7 +18,6 @@ except IndexError:
 finally:
     print('finally run')
 print('after run')
-
 
 print(sep + 'NO EXCEPTION RAISED, WITH ELSE')
 try:
@@ -32,7 +29,6 @@ else:
 finally:
     print('finally run')
 print('after run')
-
 
 print(sep + 'EXCEPTION RAISED BUT NOT CAUGHT')
 try:

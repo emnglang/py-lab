@@ -1,25 +1,31 @@
 class Super:
     def method(self):
-        print('in Super.method')           # Default behavior
-    def delegate(self):
-        self.action()                      # Expected to be defined
+        print('in Super.method')  # Default behavior
 
-class Inheritor(Super):                    # Inherit method verbatim
+    def delegate(self):
+        self.action()  # Expected to be defined
+
+
+class Inheritor(Super):  # Inherit method verbatim
     pass
 
-class Replacer(Super):                     # Replace method completely
+
+class Replacer(Super):  # Replace method completely
     def method(self):
         print('in Replacer.method')
 
-class Extender(Super):                     # Extend method behavior
+
+class Extender(Super):  # Extend method behavior
     def method(self):
         print('starting Extender.method')
         Super.method(self)
         print('ending Extender.method')
 
-class Provider(Super):                     # Fill in a required method
+
+class Provider(Super):  # Fill in a required method
     def action(self):
         print('in Provider.action')
+
 
 if __name__ == '__main__':
     for klass in (Inheritor, Replacer, Extender):

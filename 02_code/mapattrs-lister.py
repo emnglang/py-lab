@@ -3,11 +3,12 @@
 
 from mapattr import *
 from testmixin0 import Sub
-I = Sub()
-#trace(I.__dict__.keys())        # in instance
 
-trace(dflr(I.__class__))        # 2.X search order
-trace(inheritance(I))           # inheritance class order
+I = Sub()
+# trace(I.__dict__.keys())        # in instance
+
+trace(dflr(I.__class__))  # 2.X search order
+trace(inheritance(I))  # inheritance class order
 
 trace(mapattrs(I))
 
@@ -17,4 +18,3 @@ trace(mapattrs(I, withobject=True))
 
 amap = mapattrs(I, withobject=True, bysource=True)
 trace(amap)
-

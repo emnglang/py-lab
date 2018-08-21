@@ -4,11 +4,12 @@ Call timer decorator for both functions and methods.
 """
 import time
 
-def timer(label='', trace=True):             # On decorator args: retain args
-    def onDecorator(func):                   # On @: retain decorated func
-        def onCall(*args, **kargs):          # On calls: call original
-            start   = time.clock()           # State is scopes + func attr
-            result  = func(*args, **kargs)
+
+def timer(label='', trace=True):  # On decorator args: retain args
+    def onDecorator(func):  # On @: retain decorated func
+        def onCall(*args, **kargs):  # On calls: call original
+            start = time.clock()  # State is scopes + func attr
+            result = func(*args, **kargs)
             elapsed = time.clock() - start
             onCall.alltime += elapsed
             if trace:
@@ -16,6 +17,8 @@ def timer(label='', trace=True):             # On decorator args: retain args
                 values = (label, func.__name__, elapsed, onCall.alltime)
                 print(format % values)
             return result
+
         onCall.alltime = 0
         return onCall
+
     return onDecorator

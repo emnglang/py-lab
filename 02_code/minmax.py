@@ -5,8 +5,12 @@ def minmax(test, *args):
             res = arg
     return res
 
-def lessthan(x, y): return x < y                # See also: lambda
+
+def lessthan(x, y): return x < y  # See also: lambda
+
+
 def grtrthan(x, y): return x > y
 
-print(minmax(lessthan, 4, 2, 1, 5, 6, 3))       # Self-test code
+
+print(minmax(lessthan, 4, 2, 1, 5, 6, 3))  # Self-test code
 print(minmax(grtrthan, 4, 2, 1, 5, 6, 3))

@@ -11,16 +11,19 @@ test, which takes the best among _reps1 runs of (the total of _reps runs);
 """
 
 import time, sys
+
 timer = time.clock if sys.platform[:3] == 'win' else time.time
 
+
 def total(func, *pargs, **kargs):
-    _reps = kargs.pop('_reps', 1000)    # Passed-in or default reps
-    repslist = list(range(_reps))       # Hoist range out for 2.6 lists
+    _reps = kargs.pop('_reps', 1000)  # Passed-in or default reps
+    repslist = list(range(_reps))  # Hoist range out for 2.6 lists
     start = timer()
     for i in repslist:
         ret = func(*pargs, **kargs)
     elapsed = timer() - start
     return (elapsed, ret)
+
 
 def bestof(func, *pargs, **kargs):
     _reps = kargs.pop('_reps', 5)
@@ -31,6 +34,7 @@ def bestof(func, *pargs, **kargs):
         elapsed = timer() - start
         if elapsed < best: best = elapsed
     return (best, ret)
+
 
 def bestoftotal(func, *pargs, **kargs):
     _reps1 = kargs.pop('_reps1', 5)

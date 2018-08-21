@@ -1,6 +1,7 @@
 # File classtools.py (new)
 "Assorted class utilities and tools"
 
+
 class AttrDisplay:
     """
     Provides an inheritable display overload method that shows
@@ -9,6 +10,7 @@ class AttrDisplay:
     inherited from its classes). Can be mixed into any class,
     and will work on any instance.
     """
+
     def gatherAttrs(self):
         attrs = []
         for key in sorted(self.__dict__):
@@ -18,18 +20,21 @@ class AttrDisplay:
     def __repr__(self):
         return '[%s: %s]' % (self.__class__.__name__, self.gatherAttrs())
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
     class TopTest(AttrDisplay):
         count = 0
+
         def __init__(self):
             self.attr1 = TopTest.count
-            self.attr2 = TopTest.count+1
+            self.attr2 = TopTest.count + 1
             TopTest.count += 2
+
 
     class SubTest(TopTest):
         pass
 
-    X, Y = TopTest(), SubTest()      # Make two instances
-    print(X)                         # Show all instance attrs
-    print(Y)                         # Show lowest class name
+
+    X, Y = TopTest(), SubTest()  # Make two instances
+    print(X)  # Show all instance attrs
+    print(Y)  # Show lowest class name

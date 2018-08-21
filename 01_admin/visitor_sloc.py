@@ -1,8 +1,9 @@
 import sys, pprint, os
 from visitor import FileVisitor
 
-class LinesByType(FileVisitor): 
-    srcExts = [] # define in subclass
+
+class LinesByType(FileVisitor):
+    srcExts = []  # define in subclass
 
     def __init__(self, trace=1):
         FileVisitor.__init__(self, trace=trace)
@@ -24,18 +25,21 @@ class LinesByType(FileVisitor):
                 self.visitsource(filepath, ext)
                 break
 
+
 class PyLines(LinesByType):
-    srcExts = ['.py', '.pyw']   # just python files
+    srcExts = ['.py', '.pyw']  # just python files
+
 
 class SourceLines(LinesByType):
     srcExts = ['.py', '.pyw', '.cgi', '.html', '.c', '.cxx', '.h', '.i']
+
 
 if __name__ == '__main__':
     walker = SourceLines()
     walker.run(sys.argv[1])
     print('Visited %d files and %d dirs' % (walker.fcount, walker.dcount))
-    print('-'*80)
-    print('Source files=>%d, lines=>%d'  % (walker.srcFiles, walker.srcLines))
+    print('-' * 80)
+    print('Source files=>%d, lines=>%d' % (walker.srcFiles, walker.srcLines))
     print('By Types:')
     pprint.pprint(walker.extSums)
 
@@ -46,4 +50,4 @@ if __name__ == '__main__':
     print('\nPython only walk:')
     walker = PyLines(trace=0)
     walker.run(sys.argv[1])
-    pprint.pprint(walker.extSums)    
+    pprint.pprint(walker.extSums)

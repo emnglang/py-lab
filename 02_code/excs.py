@@ -9,10 +9,6 @@ while True:
         print(num ** 2)
 print('Bye')
 
-
-
-
-
 while True:
     reply = input('Enter text:')
     if reply == 'stop': break
@@ -22,8 +18,6 @@ while True:
         print('Bad!' * 8)
 print('Bye')
 
-
-
 while True:
     reply = input('Enter text:')
     if reply == 'stop': break
@@ -32,7 +26,6 @@ while True:
     except:
         print('Bad!' * 8)
 print('Bye')
-
 
 while True:
     reply = input('Enter text:')

@@ -14,8 +14,11 @@ assorted dictionary tools using 3.X/2.7 comprehensions.
 """
 
 import pprint
-def trace(X, label='', end='\n'): 
+
+
+def trace(X, label='', end='\n'):
     print(label + pprint.pformat(X) + end)  # print nicely
+
 
 def filterdictvals(D, V):
     """
@@ -24,15 +27,19 @@ def filterdictvals(D, V):
     """
     return {K: V2 for (K, V2) in D.items() if V2 != V}
 
+
 def invertdict(D):
     """
     dict D with values changed to keys (grouped by values).
     Values must all be hashable to work as dict/set keys.
     invertdict(dict(a=1, b=2, c=1)) => {1: ['a', 'c'], 2: ['b']}
     """
+
     def keysof(V):
         return sorted(K for K in D.keys() if D[K] == V)
-    return {V: keysof(V) for V in set(D.values())}    
+
+    return {V: keysof(V) for V in set(D.values())}
+
 
 def dflr(cls):
     """
@@ -42,7 +49,8 @@ def dflr(cls):
     here = [cls]
     for sup in cls.__bases__:
         here += dflr(sup)
-    return here 
+    return here
+
 
 def inheritance(instance):
     """
@@ -52,6 +60,7 @@ def inheritance(instance):
         return (instance,) + instance.__class__.__mro__
     else:
         return [instance] + dflr(instance.__class__)
+
 
 def mapattrs(instance, withobject=False, bysource=False):
     """
@@ -65,32 +74,53 @@ def mapattrs(instance, withobject=False, bysource=False):
     for attr in dir(instance):
         for obj in inherits:
             if attr in obj.__dict__:
-               attr2obj[attr] = obj
-               break
+                attr2obj[attr] = obj
+                break
 
-    if not withobject: 
+    if not withobject:
         attr2obj = filterdictvals(attr2obj, object)
     return attr2obj if not bysource else invertdict(attr2obj)
 
-if __name__ == '__main__':   
+
+if __name__ == '__main__':
     print('Classic classes in 2.X, new-style in 3.X')
+
+
     class A:         attr1 = 1
+
+
     class B(A):      attr2 = 2
+
+
     class C(A):      attr1 = 3
+
+
     class D(B, C):   pass
+
+
     I = D()
-    print('Py=>%s' % I.attr1)                        # Python's search == ours?
-    trace(inheritance(I),             'INH\n')       # [Inheritance order]
-    trace(mapattrs(I),                'ATTRS\n')     # Attrs  => Source
-    trace(mapattrs(I, bysource=True), 'OBJS\n')      # Source => [Attrs]
+    print('Py=>%s' % I.attr1)  # Python's search == ours?
+    trace(inheritance(I), 'INH\n')  # [Inheritance order]
+    trace(mapattrs(I), 'ATTRS\n')  # Attrs  => Source
+    trace(mapattrs(I, bysource=True), 'OBJS\n')  # Source => [Attrs]
 
     print('New-style classes in 2.X and 3.X')
-    class A(object): attr1 = 1                       # "(object)" optional in 3.X
+
+
+    class A(object): attr1 = 1  # "(object)" optional in 3.X
+
+
     class B(A):      attr2 = 2
+
+
     class C(A):      attr1 = 3
+
+
     class D(B, C):   pass
+
+
     I = D()
     print('Py=>%s' % I.attr1)
-    trace(inheritance(I),             'INH\n')
-    trace(mapattrs(I),                'ATTRS\n')
+    trace(inheritance(I), 'INH\n')
+    trace(mapattrs(I), 'ATTRS\n')
     trace(mapattrs(I, bysource=True), 'OBJS\n')

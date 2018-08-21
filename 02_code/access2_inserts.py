@@ -1,6 +1,9 @@
 traceMe = True
+
+
 def trace(*args):
     if traceMe: print('[' + ' '.join(map(str, args)) + ']')
+
 
 def accessControl(failIf):
     def onDecorator(aClass):
@@ -21,17 +24,19 @@ def accessControl(failIf):
         aClass.__getattribute__ = getattributes
         aClass.__setattr__ = setattributes
         return aClass
+
     return onDecorator
+
 
 def Private(*attributes):
     return accessControl(failIf=(lambda attr: attr in attributes))
+
 
 def Public(*attributes):
     return accessControl(failIf=(lambda attr: attr not in attributes))
 
 
-
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 
 """
 @Private('age')

@@ -1,8 +1,11 @@
-from access_builtins_desc import BuiltinsMixin    # A partial set!
+from access_builtins_desc import BuiltinsMixin  # A partial set!
 
 traceMe = False
+
+
 def trace(*args):
     if traceMe: print('[' + ' '.join(map(str, args)) + ']')
+
 
 def accessControl(failIf):
     def onDecorator(aClass):
@@ -28,11 +31,15 @@ def accessControl(failIf):
                         raise TypeError('private attribute change: ' + attr)
                     else:
                         setattr(self._wrapped, attr, value)
+
             return onInstance
+
     return onDecorator
+
 
 def Private(*attributes):
     return accessControl(failIf=(lambda attr: attr in attributes))
+
 
 def Public(*attributes):
     return accessControl(failIf=(lambda attr: attr not in attributes))

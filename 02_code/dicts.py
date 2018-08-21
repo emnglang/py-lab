@@ -1,13 +1,14 @@
 def copyDict(old):
     new = {}
     for key in old.keys():
-        new[key] = old[key]          # Or D.copy() today
+        new[key] = old[key]  # Or D.copy() today
     return new
+
 
 def addDict(d1, d2):
     new = {}
     for key in d1.keys():
-        new[key] = d1[key]           # Or D1.update(D2) today
+        new[key] = d1[key]  # Or D1.update(D2) today
     for key in d2.keys():
         new[key] = d2[key]
     return new

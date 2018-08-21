@@ -3,9 +3,8 @@
 # add triple quotes around a test you don't wish to run
 
 import sys
-if sys.version[0] == '2': input = raw_input   # 2.X compatible
 
-
+if sys.version[0] == '2': input = raw_input  # 2.X compatible
 
 print('test1')
 while True:
@@ -13,16 +12,12 @@ while True:
     if reply == 'stop': break
     print(reply.upper())
 
-
-
 print('test2')
 while True:
     reply = input('Enter text:')
     if reply == 'stop': break
     print(int(reply) ** 2)
 print('Bye')
-
-
 
 print('test3')
 while True:
@@ -34,8 +29,6 @@ while True:
     else:
         print(int(reply) ** 2)
 print('Bye')
-
-
 
 print('test4')
 while True:
@@ -49,8 +42,6 @@ while True:
         print(num ** 2)
 print('Bye')
 
-
-
 print('test5')
 while True:
     reply = input('Enter text:')
@@ -61,8 +52,6 @@ while True:
         print('Bad!' * 8)
 print('Bye')
 
-
-
 print('test6')
 while True:
     reply = input('Enter text:')
@@ -72,8 +61,6 @@ while True:
     except:
         print('Bad!' * 8)
 print('Bye')
-
-
 
 print('test7')
 while True:

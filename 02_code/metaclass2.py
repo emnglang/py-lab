@@ -7,14 +7,20 @@ class MetaTwo(type):
         print('In MetaTwo.init:', classname, supers, classdict, sep='\n...')
         print('...init class object:', list(Class.__dict__.keys()))
 
+
 class Eggs:
     pass
 
+
 print('making class')
-class Spam(Eggs, metaclass=MetaTwo):      # Inherits from Eggs, instance of MetaTwo
-    data = 1                              # Class data attribute
-    def meth(self, arg):                  # Class method attribute
-       return self.data + arg
+
+
+class Spam(Eggs, metaclass=MetaTwo):  # Inherits from Eggs, instance of MetaTwo
+    data = 1  # Class data attribute
+
+    def meth(self, arg):  # Class method attribute
+        return self.data + arg
+
 
 print('making instance')
 X = Spam()

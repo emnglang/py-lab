@@ -8,19 +8,20 @@ may be omitted.  See rangetest_test.py for example use cases.
 """
 trace = True
 
-def rangetest(**argchecks):                 # Validate ranges for both+defaults
-    def onDecorator(func):                  # onCall remembers func and argchecks
-        if not __debug__:                   # True if "python -O main.py args..."
-            return func                     # Wrap if debugging; else use original
+
+def rangetest(**argchecks):  # Validate ranges for both+defaults
+    def onDecorator(func):  # onCall remembers func and argchecks
+        if not __debug__:  # True if "python -O main.py args..."
+            return func  # Wrap if debugging; else use original
         else:
-            code     = func.__code__
-            allargs  = code.co_varnames[:code.co_argcount]
+            code = func.__code__
+            allargs = code.co_varnames[:code.co_argcount]
             funcname = func.__name__
 
             def onCall(*pargs, **kargs):
                 # All pargs match first N expected args by position
                 # The rest must be in kargs or be omitted defaults
-                expected    = list(allargs)
+                expected = list(allargs)
                 positionals = expected[:len(pargs)]
 
                 for (argname, (low, high)) in argchecks.items():
@@ -44,6 +45,8 @@ def rangetest(**argchecks):                 # Validate ranges for both+defaults
                         if trace:
                             print('Argument "{0}" defaulted'.format(argname))
 
-                return func(*pargs, **kargs)    # OK: run original call
+                return func(*pargs, **kargs)  # OK: run original call
+
             return onCall
+
     return onDecorator

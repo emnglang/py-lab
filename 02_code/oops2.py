@@ -1,9 +1,12 @@
 from __future__ import print_function  # 2.X
 
+
 class MyError(Exception): pass
+
 
 def oops():
     raise MyError('Spam!')
+
 
 def doomed():
     try:
@@ -14,6 +17,7 @@ def doomed():
         print('caught error:', MyError, data)
     else:
         print('no error caught...')
+
 
 if __name__ == '__main__':
     doomed()

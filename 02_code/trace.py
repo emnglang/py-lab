@@ -1,6 +1,7 @@
 class Wrapper:
     def __init__(self, object):
-        self.wrapped = object                    # Save object
+        self.wrapped = object  # Save object
+
     def __getattr__(self, attrname):
-        print('Trace: ' + attrname)              # Trace fetch
-        return getattr(self.wrapped, attrname)   # Delegate fetch
+        print('Trace: ' + attrname)  # Trace fetch
+        return getattr(self.wrapped, attrname)  # Delegate fetch

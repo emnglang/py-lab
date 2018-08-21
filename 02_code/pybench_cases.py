@@ -9,21 +9,21 @@ listed, or a "py -3 pybench_cases.py -a -t" to trace command lines too.
 
 import pybench, sys
 
-pythons = [                                                         # (ispy3?, path)
+pythons = [  # (ispy3?, path)
     (1, 'C:\python33\python'),
     (0, 'C:\python27\python'),
     (0, 'C:\pypy\pypy-1.9\pypy')
 ]
 
-stmts = [                                                           # (num,rpt,stmt)
-    (0, 0, "[x ** 2 for x in range(1000)]"),                        # Iterations                        
-    (0, 0, "res=[]\nfor x in range(1000): res.append(x ** 2)"),     # \n=multistmt
-    (0, 0, "$listif3(map(lambda x: x ** 2, range(1000)))"),         # \n\t=indent
-    (0, 0, "list(x ** 2 for x in range(1000))"),                    # $=list or ''
+stmts = [  # (num,rpt,stmt)
+    (0, 0, "[x ** 2 for x in range(1000)]"),  # Iterations
+    (0, 0, "res=[]\nfor x in range(1000): res.append(x ** 2)"),  # \n=multistmt
+    (0, 0, "$listif3(map(lambda x: x ** 2, range(1000)))"),  # \n\t=indent
+    (0, 0, "list(x ** 2 for x in range(1000))"),  # $=list or ''
     (0, 0, "s = 'spam' * 2500\nx = [s[i] for i in range(10000)]"),  # String ops
     (0, 0, "s = '?'\nfor i in range(10000): s += '?'"),
 ]
 
-tracecmd = '-t' in sys.argv                           # -t: trace commmand lines?
-pythons  = pythons if '-a' in sys.argv else None      # -a: all in list, else one?
+tracecmd = '-t' in sys.argv  # -t: trace commmand lines?
+pythons = pythons if '-a' in sys.argv else None  # -a: all in list, else one?
 pybench.runner(stmts, pythons, tracecmd)

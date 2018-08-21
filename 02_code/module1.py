@@ -1,2 +1,2 @@
-def printer(x):                   # Module attribute
+def printer(x):  # Module attribute
     print(x)

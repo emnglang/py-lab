@@ -1,2 +1,3 @@
-import b     # File a.py
+import b  # File a.py
+
 X = 111

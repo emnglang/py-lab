@@ -1,5 +1,5 @@
 # code\main.py
-#import string
+# import string
 from . import string
-print(string)
 
+print(string)

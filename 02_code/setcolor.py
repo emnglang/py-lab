@@ -8,11 +8,13 @@ to convert to hex from decimal.
 from tkinter import *
 from tkinter.colorchooser import askcolor
 
+
 def setBgColor():
     (triple, hexstr) = askcolor()
     if hexstr:
         print(hexstr)
         push.config(bg=hexstr)
+
 
 root = Tk()
 push = Button(root, text='Set Background Color', command=setBgColor)

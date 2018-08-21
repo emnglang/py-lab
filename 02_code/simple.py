@@ -1,2 +1,2 @@
 print('hello')
-spam = 1                   # Initialize variable
+spam = 1  # Initialize variable

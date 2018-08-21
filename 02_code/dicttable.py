@@ -7,7 +7,7 @@ D = dict(name='Bob', age=40)
 print(D)
 D = dict([['name', 'Bob'], ['age', 40]])
 print(D)
-#D = dict(zip(keyslist, valslist))
+# D = dict(zip(keyslist, valslist))
 D = dict.fromkeys(['name', 'age'])
 print(D)
 print(D['name'])
@@ -17,10 +17,10 @@ D.keys()
 D.values()
 D.items()
 D.copy()
-#D.update(D2)
-#D.get(key, default?)
-#D.pop(key, default?)
-#D.setdefault(key, default?)
+# D.update(D2)
+# D.get(key, default?)
+# D.pop(key, default?)
+# D.setdefault(key, default?)
 D.popitem()
 """
 len(D)
@@ -51,7 +51,7 @@ L * 3
 for x in L: print(x)
 3 in L
 L.append(4)
-L.extend([5,6,7])
+L.extend([5, 6, 7])
 print(L)
 """
 L.insert(I, X)
@@ -68,6 +68,6 @@ L[i:j] = []
 L[i] = 3
 L[i:j] = [4,5,6]
 """
-L = [x**2 for x in range(5)]
+L = [x ** 2 for x in range(5)]
 print(L)
 print(list(map(ord, 'spam')))

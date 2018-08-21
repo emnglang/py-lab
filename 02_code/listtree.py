@@ -8,6 +8,7 @@ class ListTree:
     constructed string;  uses __X attr names to avoid impacting clients;  
     recurses to superclasses explicitly, uses str.format() for clarity;
     """
+
     def __attrnames(self, obj, indent):
         spaces = ' ' * (indent + 1)
         result = ''
@@ -22,31 +23,33 @@ class ListTree:
         dots = '.' * indent
         if aClass in self.__visited:
             return '\n{0}<Class {1}:, address {2}: (see above)>\n'.format(
-                           dots, 
-                           aClass.__name__, 
-                           id(aClass))
+                dots,
+                aClass.__name__,
+                id(aClass))
         else:
             self.__visited[aClass] = True
-            here  = self.__attrnames(aClass, indent)
+            here = self.__attrnames(aClass, indent)
             above = ''
             for super in aClass.__bases__:
-                above += self.__listclass(super, indent+4)
+                above += self.__listclass(super, indent + 4)
             return '\n{0}<Class {1}, address {2}:\n{3}{4}{5}>\n'.format(
-                           dots, 
-                           aClass.__name__, 
-                           id(aClass), 
-                           here, above, 
-                           dots)
+                dots,
+                aClass.__name__,
+                id(aClass),
+                here, above,
+                dots)
 
     def __str__(self):
         self.__visited = {}
-        here  = self.__attrnames(self, 0)
+        here = self.__attrnames(self, 0)
         above = self.__listclass(self.__class__, 4)
         return '<Instance of {0}, address {1}:\n{2}{3}>'.format(
-                           self.__class__.__name__,
-                           id(self),
-                           here, above)
+            self.__class__.__name__,
+            id(self),
+            here, above)
 
-if __name__ == '__main__': 
+
+if __name__ == '__main__':
     import testmixin
+
     testmixin.tester(ListTree)

@@ -5,7 +5,8 @@ class SuperMeta(type):
         print('In SuperMeta.call: ', meta, classname, supers, classdict, sep='\n...')
         return type.__call__(meta, classname, supers, classdict)
 
-class SubMeta(SuperMeta):#, metaclass=SuperMeta):
+
+class SubMeta(SuperMeta):  # , metaclass=SuperMeta):
     def __new__(meta, classname, supers, classdict):
         print('In SubMeta.new: ', meta, classname, supers, classdict, sep='\n...')
         return type.__new__(meta, classname, supers, classdict)
@@ -14,11 +15,12 @@ class SubMeta(SuperMeta):#, metaclass=SuperMeta):
         print('In SubMeta init:', classname, supers, classdict, sep='\n...')
         print('...init class object:', list(Class.__dict__.keys()))
 
+
 print(SubMeta.__class__)
 print(SubMeta.__mro__)
 print(SubMeta.__call__)
-print(SubMeta.__call__(SubMeta, 'xxx', (),{}))   # Explicit calls work
-print(SubMeta('xxx', (),{}))                     # But implict built-in calls do not
+print(SubMeta.__call__(SubMeta, 'xxx', (), {}))  # Explicit calls work
+print(SubMeta('xxx', (), {}))  # But implict built-in calls do not
 
 """
 class Eggs:

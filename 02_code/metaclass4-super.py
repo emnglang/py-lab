@@ -8,6 +8,7 @@ class SuperMetaObj:
         self.__Init__(Class, classname, supers, classdict)
         return Class
 
+
 class SubMetaObj(SuperMetaObj):
     def __New__(self, classname, supers, classdict):
         print('In SubMetaObj.new: ', classname, supers, classdict, sep='\n...')
@@ -17,14 +18,20 @@ class SubMetaObj(SuperMetaObj):
         print('In SubMetaObj.init:', classname, supers, classdict, sep='\n...')
         print('...init class object:', list(Class.__dict__.keys()))
 
-class Eggs: 
+
+class Eggs:
     pass
 
+
 print('making class')
-class Spam(Eggs, metaclass=SubMetaObj()):       # meta is a normal class instance
-    data = 1                                    # Called at end of statement
+
+
+class Spam(Eggs, metaclass=SubMetaObj()):  # meta is a normal class instance
+    data = 1  # Called at end of statement
+
     def meth(self, arg):
         return self.data + arg
+
 
 print('making instance')
 X = Spam()

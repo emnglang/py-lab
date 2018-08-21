@@ -1,13 +1,15 @@
 from argtest import rangetest, typetest
 
+
 class C:
     @rangetest(a=(1, 10))
-    def meth1(self, a): 
+    def meth1(self, a):
         return a * 1000
 
     @typetest(a=int)
-    def meth2(self, a): 
-        return a * 1000 
+    def meth2(self, a):
+        return a * 1000
+
 
 """
 >>> from argtest_testmeth import C
@@ -20,4 +22,4 @@ TypeError: meth1 argument "a" not (1, 10)
 20000
 >>> X.meth2(20.9)
 TypeError: meth2 argument "a" not <class 'int'>
-""" 
+"""

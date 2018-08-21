@@ -3,25 +3,31 @@
 from types import FunctionType
 from decotools import tracer, timer
 
+
 def decorateAll(decorator):
     def DecoDecorate(aClass):
         for attr, attrval in aClass.__dict__.items():
             if type(attrval) is FunctionType:
-                setattr(aClass, attr, decorator(attrval))        # Not __dict__
+                setattr(aClass, attr, decorator(attrval))  # Not __dict__
         return aClass
+
     return DecoDecorate
 
-#@decorateAll(tracer)                          # Use a class decorator
 
-@decorateAll(timer(label='@@'))  
-class Person:                                 # Applies func decorator to methods
-    def __init__(self, name, pay):            # Person = decorateAll(..)(Person)
-        self.name = name                      # Person = DecoDecorate(Person)
-        self.pay  = pay
+# @decorateAll(tracer)                          # Use a class decorator
+
+@decorateAll(timer(label='@@'))
+class Person:  # Applies func decorator to methods
+    def __init__(self, name, pay):  # Person = decorateAll(..)(Person)
+        self.name = name  # Person = DecoDecorate(Person)
+        self.pay = pay
+
     def giveRaise(self, percent):
         self.pay *= (1.0 + percent)
+
     def lastName(self):
         return self.name.split()[-1]
+
 
 bob = Person('Bob Smith', 50000)
 sue = Person('Sue Jones', 100000)
@@ -32,7 +38,7 @@ print(bob.lastName(), sue.lastName())
 
 # If using timer: total time per method
 
-print('-'*40)
+print('-' * 40)
 print('%.5f' % Person.__init__.alltime)
 print('%.5f' % Person.giveRaise.alltime)
 print('%.5f' % Person.lastName.alltime)

@@ -7,6 +7,7 @@ from __future__ import print_function  # 2.X compatibility
 seplen = 60
 sepchr = '-'
 
+
 def listing(module, verbose=True):
     sepline = sepchr * seplen
     if verbose:
@@ -15,12 +16,12 @@ def listing(module, verbose=True):
         print(sepline)
 
     count = 0
-    for attr in sorted(module.__dict__):      # Scan namespace keys (or enumerate)
-        print('%02d) %s' % (count, attr), end = ' ')
+    for attr in sorted(module.__dict__):  # Scan namespace keys (or enumerate)
+        print('%02d) %s' % (count, attr), end=' ')
         if attr.startswith('__'):
-            print('<built-in name>')          # Skip __file__, etc.
+            print('<built-in name>')  # Skip __file__, etc.
         else:
-            print(getattr(module, attr))      # Same as .__dict__[attr]
+            print(getattr(module, attr))  # Same as .__dict__[attr]
         count += 1
 
     if verbose:
@@ -28,6 +29,8 @@ def listing(module, verbose=True):
         print(module.__name__, 'has %d names' % count)
         print(sepline)
 
+
 if __name__ == '__main__':
     import mydir
-    listing(mydir)                            # Self-test code: list myself
+
+    listing(mydir)  # Self-test code: list myself

@@ -1,6 +1,7 @@
 # File slots-test.py
 from __future__ import print_function
 import timeit
+
 base = """
 Is = []
 for i in range(1000):
@@ -23,6 +24,3 @@ class C:
 """ + base
 print('Nonslots=>', end=' ')
 print(min(timeit.repeat(stmt, number=1000, repeat=3)))
-
-
-

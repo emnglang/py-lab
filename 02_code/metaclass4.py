@@ -15,15 +15,21 @@ class MetaObj:
         print('In MetaObj.init:', classname, supers, classdict, sep='\n...')
         print('...init class object:', list(Class.__dict__.keys()))
 
+
 class Eggs:
     pass
 
+
 print('making class')
-class Spam(Eggs, metaclass=MetaObj()):          # MetaObj is normal class instance
-    data = 1                                    # Called at end of statement
+
+
+class Spam(Eggs, metaclass=MetaObj()):  # MetaObj is normal class instance
+    data = 1  # Called at end of statement
+
     def meth(self, arg):
         return self.data + arg
 
+
 print('making instance')
 X = Spam()
-print('data:', X.data, X.meth(2)) 
+print('data:', X.data, X.meth(2))

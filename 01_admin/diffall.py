@@ -1,5 +1,7 @@
 import os, dirdiff
-blocksize = 1024 * 1024              # up to 1M per read
+
+blocksize = 1024 * 1024  # up to 1M per read
+
 
 def intersect(seq1, seq2):
     """
@@ -8,6 +10,7 @@ def intersect(seq1, seq2):
     ordered, so any platform-dependent directory order would be lost
     """
     return [item for item in seq1 if item in seq2]
+
 
 def comparetrees(dir1, dir2, diffs, verbose=False):
     """
@@ -63,8 +66,8 @@ def comparetrees(dir1, dir2, diffs, verbose=False):
 if __name__ == '__main__':
     dir1, dir2 = dirdiff.getargs()
     diffs = []
-    comparetrees(dir1, dir2, diffs, True)      # changes diffs in-place
-    print('=' * 40)                            # walk, report diffs list
+    comparetrees(dir1, dir2, diffs, True)  # changes diffs in-place
+    print('=' * 40)  # walk, report diffs list
     if not diffs:
         print('No diffs found.')
     else:
