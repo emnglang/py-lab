@@ -1,9 +1,3 @@
-"""
-Count lines among all program source files in a tree named on the command
-line, and report totals grouped by file types (extension).  A simple SLOC
-(source lines of code) metric: skip blank and comment lines if desired. 
-"""
-
 import sys, pprint, os
 from visitor import FileVisitor
 

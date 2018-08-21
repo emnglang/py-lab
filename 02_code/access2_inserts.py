@@ -1,10 +1,3 @@
-"""
-Class insertion alternative: retains original class type,
-but won't validate built-in operations, disallows class's own
-methods to access privates, requires new-style clients in 
-2.X, and breaks clients already usiing methods inserted.
-"""
-
 traceMe = True
 def trace(*args):
     if traceMe: print('[' + ' '.join(map(str, args)) + ']')

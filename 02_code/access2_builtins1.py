@@ -1,7 +1,3 @@
-"""
-Catch built-ins: inline redefinition option
-"""
-
 traceMe = False
 def trace(*args):
     if traceMe: print('[' + ' '.join(map(str, args)) + ']')

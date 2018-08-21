@@ -1,13 +1,3 @@
-"""
-################################################################################
-Usage: python dirdiff.py dir1-path dir2-path
-Compare two directories to find files that exist in one but not the other.
-This version uses the os.listdir function and list difference.  Note that
-this script checks only filenames, not file contents--see diffall.py for an
-extension that does the latter by comparing .read() results.
-################################################################################
-"""
-
 import os, sys
 
 def reportdiffs(unique1, unique2, dir1, dir2):

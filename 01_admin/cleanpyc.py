@@ -1,8 +1,3 @@
-"""
-delete all .pyc bytecode files in a directory tree: use the
-command line arg as root if given, else current working dir
-"""
-
 import os, sys
 rootdir  = os.getcwd() if len(sys.argv) < 2 else sys.argv[1]
 findonly = False       if len(sys.argv) < 3 else int(sys.argv[2])

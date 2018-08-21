@@ -1,7 +1,3 @@
-"""
-File: access-test.py
-Test code: separate file to allow decorator reuse.
-"""
 import sys
 from access_desc import Private, Public
 

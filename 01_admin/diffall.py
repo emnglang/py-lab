@@ -1,17 +1,3 @@
-"""
-################################################################################
-Usage: "python diffall.py dir1 dir2".
-Recursive directory tree comparison: report unique files that exist in only
-dir1 or dir2, report files of the same name in dir1 and dir2 with differing 
-contents, report instances of same name but different type in dir1 and dir2,
-and do the same for all subdirectories of the same names in and below dir1 
-and dir2.  A summary of diffs appears at end of output, but search redirected
-output for "DIFF" and "unique" strings for further details.  New: (3E) limit 
-reads to 1M for large files, (3E) catch same name=file/dir, (4E) avoid extra 
-os.listdir() calls in dirdiff.comparedirs() by passing results here along.
-################################################################################
-"""
-
 import os, dirdiff
 blocksize = 1024 * 1024              # up to 1M per read
 

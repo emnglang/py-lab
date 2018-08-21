@@ -1,16 +1,8 @@
-"""
-Initial superclass candidates
-"""
-
 traceMe = False
 def trace(*args):
     if traceMe: print('[' + ' '.join(map(str, args)) + ']')
 
 
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-# WORKS
 class BuiltinsMixin:
     def __add__(self, other):                                             # wants + result, not attr vaue
         return self.__class__.__getattr__(self, '__add__')(other)         # route back to proxy __getattr__
@@ -20,41 +12,6 @@ class BuiltinsMixin:
         return self.__class__.__getattr__(self, '__getitem__')(index)
     def __call__(self, *args, **kargs):
         return self.__class__.__getattr__(self, '__call__')(*args, **kargs) 
-
-
-
-"""
-#WORKS
-class BuiltinsMixin:
-    def __add__(self, other):                           
-        return self._onInstance__wrapped + other        
-    def __str__(self):
-        return str(self._onInstance__wrapped)
-"""
-
-
-"""
-# LOOPS
-class BuiltinsMixin:
-    def __add__(self, other):                  
-        return getattr(self, '__add__')(other)
-    def __str__(self):
-        return getattr(self, '__str__')()        
-"""
-
-
-"""
-# LOOPS
-class BuiltinsMixin:
-    def __add__(self, other):                                         
-        return self.__add__(other) 
-    def __str__(self):
-        return self.__str__()        
-"""
-
-
-#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
 def accessControl(failIf):
     def onDecorator(aClass):
@@ -83,9 +40,6 @@ def Private(*attributes):
 
 def Public(*attributes):
     return accessControl(failIf=(lambda attr: attr not in attributes))
-
-
-#------------------------------------------------------------------------------
 
 
 @Private('age')

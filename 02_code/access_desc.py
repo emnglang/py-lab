@@ -1,7 +1,3 @@
-"""
-File access_desc.py (3.X + 2.X)
-See access.py: this version uses the descriptor-based BuiltinsMixin.
-"""
 from access_builtins_desc import BuiltinsMixin    # A partial set!
 
 traceMe = False

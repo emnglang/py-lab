@@ -1,7 +1,3 @@
-"""
-Catch built-ins: superclass option 1
-"""
-
 traceMe = False
 def trace(*args):
     if traceMe: print('[' + ' '.join(map(str, args)) + ']')

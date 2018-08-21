@@ -1,17 +1,3 @@
-"""
-File argtest.py: (3.X + 2.X) function decorator that performs 
-arbitrary passed-in validations for arguments passed to any 
-function method. Range and type tests are two example uses;
-valuetest handles more arbitrary tests on a argument's value.
-
-Arguments are specified by keyword to the decorator. In the actual 
-call, arguments may be passed by position or keyword, and defaults
-may be omitted.  See self-test code below for example use cases.
-
-Caveats: doesn't fully support nesting because call proxy args 
-differ; doesn't validate extra args passed to a decoratee's *args;
-and may be no easier than an assert except for canned use cases.
-"""
 trace = False
 
 

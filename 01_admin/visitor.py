@@ -1,14 +1,3 @@
-"""
-####################################################################################
-Test: "python ...\Tools\visitor.py dir testmask [string]".  Uses classes and
-subclasses to wrap some of the details of os.walk call usage to walk and search;
-testmask is an integer bitmask with 1 bit per available self-test; see also: 
-visitor_*/.py subclasses use cases; frameworks should generally use__X pseudo
-private names, but all names here are exported for use in subclasses and clients;
-redefine reset to support multiple independent walks that require subclass updates;
-####################################################################################
-"""
-
 import os, sys
 
 class FileVisitor:

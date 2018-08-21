@@ -1,15 +1,3 @@
-"""
-File access.py (3.X + 2.X)
-Class decorator with Private and Public attribute declarations.
-Controls external access to attributes stored on an instance, or 
-inherited by it from its classes in any fashion.
-
-Private declares attribute names that cannot be fetched or assigned 
-outside the decorated class, and Public declares all the names that can.
-
-Caveats: in 3.X catches built-ins coded in BuiltinMixins only (expand me);
-as coded, Public may be less useful than Private for operator overloading.
-"""
 from access_builtins import BuiltinsMixin    # A partial set!
 
 traceMe = False

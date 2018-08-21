@@ -1,18 +1,3 @@
-"""
-File access2.py (3.X + 2.X)
-Class decorator with Private and Public attribute declarations.
-
-Controls external access to attributes stored on an instance, or 
-Inherited by it from its classes. Private declares attribute names
-that cannot be fetched or assigned outside the decorated class, 
-and Public declares all the names that can. 
-
-Caveat: this works in 3.X for explicitly named attributes only: __X__
-operator overloading methods implicitly run for built-in operations
-do not trigger either __getattr__ or __getattribute__ in new-style 
-classes.  Add __X__ methods here to intercept and delegate built-ins.
-"""
-
 traceMe = False
 def trace(*args):
     if traceMe: print('[' + ' '.join(map(str, args)) + ']')
